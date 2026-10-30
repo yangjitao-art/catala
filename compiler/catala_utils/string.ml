@@ -17,7 +17,50 @@
 include Stdlib.String
 
 let get_opt s i = try Some (get s i) with Invalid_argument _ -> None
-let to_ascii : string -> string = Ubase.from_utf8
+
+module AsciiMap = Stdlib.Map.Make (struct
+  type t = int
+
+  let compare = Stdlib.compare
+end)
+
+let ascii_table =
+  List.fold_left
+    (fun m (cp, repl) -> AsciiMap.add cp repl m)
+    AsciiMap.empty String_ascii_table.map
+
+(* ASCII is kept, Latin letters lose their diacritics, and characters without
+   a replacement are kept, replaced by [strip] when provided, or turned into
+   '?' when the UTF-8 encoding is invalid. *)
+let transliterate ?strip s =
+  let n = length s in
+  let b = Buffer.create n in
+  let rec loop i =
+    if i < n then
+      let dec = get_utf_8_uchar s i in
+      if Uchar.utf_decode_is_valid dec then begin
+        let u = Uchar.utf_decode_uchar dec in
+        let cp = Uchar.to_int u in
+        (if cp <= 127 then Buffer.add_char b (Char.chr cp)
+         else
+           match AsciiMap.find_opt cp ascii_table with
+           | Some repl -> Buffer.add_string b repl
+           | None -> (
+             match strip with
+             | Some repl -> Buffer.add_string b repl
+             | None -> Buffer.add_utf_8_uchar b u));
+        loop (i + Uchar.utf_decode_length dec)
+      end
+      else begin
+        Buffer.add_char b '?';
+        loop (i + Uchar.utf_decode_length dec)
+      end
+  in
+  loop 0;
+  Buffer.contents b
+
+let to_ascii s = transliterate s
+let to_ascii_strip s = transliterate ~strip:"" s
 
 let utf8_seq s =
   let n = length s in
@@ -44,7 +87,7 @@ let to_id s =
   if s = "_" then s
   else
     let s =
-      Ubase.from_utf8 ~strip:"" s
+      to_ascii_strip s
       |> map (function
         | ('a' .. 'z' | 'A' .. 'Z' | '0' .. '9') as c -> c
         | _ -> '_')

@@ -5,7 +5,6 @@
   catala.bindlib
   catala_utils
   re
-  ubase
   catala.runtime_ocaml
   shared_ast
   scopelang))

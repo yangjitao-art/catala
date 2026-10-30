@@ -1,4 +1,4 @@
-DEPS = ninja_utils ocolor otoml ubase json-data-encoding
+DEPS = ninja_utils ocolor otoml json-data-encoding
 
 deps: deps-list
 	for url in $(shell cat $<); do \

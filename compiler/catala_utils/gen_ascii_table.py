@@ -1,0 +1,109 @@
+#!/usr/bin/env python3
+"""Generate the Latin transliteration table used by Catala's String.to_ascii.
+
+The table is derived from the Unicode Character Database (NFKD compatibility
+decompositions, minus combining marks) plus a small hand-written map for
+letters that have no decomposition. It reproduces the observable behaviour of
+removing diacritics from Latin letters.
+"""
+import unicodedata
+
+RANGES = [(0x80, 0x2FFF), (0xA640, 0xA7FF), (0xFB00, 0xFB06)]
+
+entries = {}
+
+# 1. Canonical decomposition (accents), dropping combining marks. Canonical
+#    (rather than compatibility) decomposition keeps superscripts, subscripts
+#    and compatibility symbols out of the table, as intended.
+for lo, hi in RANGES:
+    for cp in range(lo, hi + 1):
+        ch = chr(cp)
+        # Only letters are transliterated; standalone accents, superscripts,
+        # circled digits and other symbols keep their original form.
+        if not unicodedata.category(ch).startswith("L"):
+            continue
+        decomposed = unicodedata.normalize("NFKD", ch)
+        stripped = "".join(
+            c
+            for c in decomposed
+            if unicodedata.category(c) not in ("Mn", "Mc", "Me")
+        )
+        if stripped != ch and stripped and all(ord(c) < 128 for c in stripped):
+            entries[cp] = stripped
+
+# 2. Combining diacritical marks disappear when transliterating.
+for cp in range(0x300, 0x370):
+    entries[cp] = ""
+
+# 3. Letters without a decomposition mapping.
+manual = {
+    0x00C6: "AE", 0x00E6: "ae",
+    0x00D0: "D", 0x00F0: "d",
+    0x00D8: "O", 0x00F8: "o",
+    0x00DE: "TH", 0x00FE: "th",
+    0x0110: "D", 0x0111: "d",
+    0x0126: "H", 0x0127: "h",
+    0x0131: "i",
+    0x0138: "kra",
+    0x013F: "L", 0x0140: "l",
+    0x0141: "L", 0x0142: "l",
+    0x0149: "n",
+    0x014A: "NG", 0x014B: "ng",
+    0x0152: "OE", 0x0153: "oe",
+    0x0166: "T", 0x0167: "t",
+    0x017F: "s",
+    0x0180: "b", 0x0188: "c", 0x018C: "d", 0x0192: "f",
+    0x0199: "k", 0x019A: "l", 0x019E: "n", 0x01A5: "p",
+    0x01AB: "t", 0x01AD: "t", 0x01B4: "y", 0x01B6: "z",
+    0x01B9: "z", 0x01BD: "z",
+    0x01C4: "DZ", 0x01C5: "Dz", 0x01C6: "dz",
+    0x01C7: "LJ", 0x01C8: "Lj", 0x01C9: "lj",
+    0x01CA: "NJ", 0x01CB: "Nj", 0x01CC: "nj",
+    0x01DD: "e",
+    0x01F1: "DZ", 0x01F2: "Dz", 0x01F3: "dz",
+    0x00DF: "ss", 0x1E9E: "S",
+    0x1E9A: "a", 0x1E9C: "s", 0x1E9D: "s", 0x1E9F: "d",
+    0x1EFA: "LL", 0x1EFB: "ll", 0x1EFC: "V", 0x1EFD: "v",
+    0x1EFE: "Y", 0x1EFF: "y",
+}
+
+# 4. Punctuation, symbols and non-ASCII whitespace.
+punct = {
+    0x2010: "-", 0x2013: "-", 0x2014: "-",
+    0x2018: "'", 0x2019: "'", 0x201C: '"', 0x201D: '"',
+    0x2026: "...", 0x2212: "-",
+}
+spaces = [
+    0x0085, 0x00A0, 0x1680,
+    0x2000, 0x2001, 0x2002, 0x2003, 0x2004, 0x2005, 0x2006,
+    0x2007, 0x2008, 0x2009, 0x200A,
+    0x2028, 0x2029, 0x202F, 0x205F, 0x3000,
+]
+for cp in spaces:
+    punct[cp] = " "
+entries.update(manual)
+entries.update(punct)
+
+lines = []
+lines.append("(* Transliteration table for [String.to_ascii].")
+lines.append("")
+lines.append("   Generated from Unicode 15.0 compatibility decompositions (NFKD)")
+lines.append("   with combining marks removed, plus a hand-written map for Latin")
+lines.append("   letters without decompositions and for punctuation. Do not edit")
+lines.append("   by hand; regenerate with the project's Unicode table script. *)")
+lines.append("")
+lines.append("let map : (int * string) list = [")
+for cp in sorted(entries):
+    value = entries[cp].replace("\\", "\\\\").replace('"', '\\"')
+    lines.append(f'  (0x{cp:04X}, "{value}");')
+lines.append("]")
+lines.append("")
+
+out = "/home/l/catala/compiler/catala_utils/string_ascii_table.ml"
+with open(out, "w", encoding="utf-8") as f:
+    f.write("\n".join(lines))
+
+print(f"entries: {len(entries)}")
+print("samples:")
+for cp in [0xE9, 0xDF, 0x153, 0xF8, 0x111, 0x301, 0x1EA1, 0x2013, 0xA0]:
+    print(f"  U+{cp:04X} -> {entries.get(cp)!r}")

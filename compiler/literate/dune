@@ -1,7 +1,7 @@
 (library
  (name literate)
  (public_name catala.literate)
- (libraries re catala_utils surface ubase uutf))
+ (libraries re catala_utils surface uutf))
 
 (rule
  (target pygment_lexers.ml)
