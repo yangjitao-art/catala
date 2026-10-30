@@ -1,0 +1,22 @@
+Catala
+
+Copyright (C) 2020 Inria and contributors
+
+This product includes software developed at Inria
+(https://www.catala-lang.org) and is a modified version of the Catala
+compiler (https://github.com/CatalaLang/catala), distributed under the
+Apache License, Version 2.0 (see LICENSE.txt).
+
+Modifications in this distribution:
+
+  - deps/bindlib: vendored, independent implementation of the Bindlib 6.0.0
+    API, used instead of the external bindlib package.
+  - compiler/catala_utils/string.ml and string_ascii_table.ml: the ubase
+    dependency was replaced by a transliteration table generated from
+    Unicode data.
+  - catala.opam, catala.opam.locked, deps/Makefile, deps/deps-list and the
+    dune files of shared_ast, dcalc, lcalc, scalc, catala_utils and literate
+    were updated accordingly.
+
+Third-party license information: see THIRD_PARTY_LICENSES.md and
+sbom.cdx.json.

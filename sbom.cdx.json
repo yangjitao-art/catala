@@ -1,0 +1,669 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-30T08:45:47.685537Z",
+    "component": {
+      "type": "application",
+      "name": "catala",
+      "version": "1.3.0-fork",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ]
+    },
+    "tools": [
+      {
+        "vendor": "local",
+        "name": "build_system/third_party_licenses.py",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "library",
+      "name": "alcotest",
+      "version": "1.9.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "ISC"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "linked"
+        }
+      ],
+      "purl": "pkg:opam/alcotest@1.9.1"
+    },
+    {
+      "type": "library",
+      "name": "cmdliner",
+      "version": "2.1.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "ISC"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "linked"
+        }
+      ],
+      "purl": "pkg:opam/cmdliner@2.1.1"
+    },
+    {
+      "type": "library",
+      "name": "hex",
+      "version": "1.5.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "ISC"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "linked"
+        }
+      ],
+      "purl": "pkg:opam/hex@1.5.0"
+    },
+    {
+      "type": "library",
+      "name": "json-data-encoding",
+      "version": "1.0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "linked"
+        }
+      ],
+      "purl": "pkg:opam/json-data-encoding@1.0.1"
+    },
+    {
+      "type": "library",
+      "name": "menhirLib",
+      "version": "20250912",
+      "licenses": [
+        {
+          "license": {
+            "name": "LGPL-2.0-only WITH OCaml-LGPL-linking-exception"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "linked"
+        }
+      ],
+      "purl": "pkg:opam/menhirlib@20250912"
+    },
+    {
+      "type": "library",
+      "name": "ninja_utils",
+      "version": "2.0.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "linked"
+        }
+      ],
+      "purl": "pkg:opam/ninja_utils@2.0.0"
+    },
+    {
+      "type": "library",
+      "name": "ocamlgraph",
+      "version": "2.2.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "LGPL-2.1-only WITH OCaml-LGPL-linking-exception (LICENSE)"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "linked"
+        }
+      ],
+      "purl": "pkg:opam/ocamlgraph@2.2.0"
+    },
+    {
+      "type": "library",
+      "name": "ocolor",
+      "version": "1.3.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "linked"
+        }
+      ],
+      "purl": "pkg:opam/ocolor@1.3.1"
+    },
+    {
+      "type": "library",
+      "name": "otoml",
+      "version": "1.0.5",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "linked"
+        }
+      ],
+      "purl": "pkg:opam/otoml@1.0.5"
+    },
+    {
+      "type": "library",
+      "name": "re",
+      "version": "1.14.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "linked"
+        }
+      ],
+      "purl": "pkg:opam/re@1.14.0"
+    },
+    {
+      "type": "library",
+      "name": "sedlex",
+      "version": "3.8.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "linked"
+        }
+      ],
+      "purl": "pkg:opam/sedlex@3.8.1"
+    },
+    {
+      "type": "library",
+      "name": "uucp",
+      "version": "18.0.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "ISC"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "linked"
+        }
+      ],
+      "purl": "pkg:opam/uucp@18.0.0"
+    },
+    {
+      "type": "library",
+      "name": "uutf",
+      "version": "1.0.4",
+      "licenses": [
+        {
+          "license": {
+            "name": "ISC"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "linked"
+        }
+      ],
+      "purl": "pkg:opam/uutf@1.0.4"
+    },
+    {
+      "type": "library",
+      "name": "yojson",
+      "version": "2.2.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "BSD-3-Clause"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "linked"
+        }
+      ],
+      "purl": "pkg:opam/yojson@2.2.2"
+    },
+    {
+      "type": "library",
+      "name": "zarith",
+      "version": "1.14",
+      "licenses": [
+        {
+          "license": {
+            "name": "LGPL-2.0-only WITH OCaml-LGPL-linking-exception"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "linked"
+        }
+      ],
+      "purl": "pkg:opam/zarith@1.14"
+    },
+    {
+      "type": "library",
+      "name": "js_of_ocaml",
+      "version": "6.5.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "GPL-2.0-or-later OR LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "catala-js only"
+        }
+      ],
+      "purl": "pkg:opam/js_of_ocaml@6.5.0"
+    },
+    {
+      "type": "library",
+      "name": "js_of_ocaml-ppx",
+      "version": "6.5.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "GPL-2.0-or-later OR LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "catala-js only"
+        }
+      ],
+      "purl": "pkg:opam/js_of_ocaml-ppx@6.5.0"
+    },
+    {
+      "type": "library",
+      "name": "zarith_stubs_js",
+      "version": "v0.16.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "catala-js only"
+        }
+      ],
+      "purl": "pkg:opam/zarith_stubs_js@v0.16.1"
+    },
+    {
+      "type": "library",
+      "name": "conf-ninja",
+      "version": "1",
+      "licenses": [
+        {
+          "license": {
+            "name": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "build-only"
+        }
+      ],
+      "purl": "pkg:opam/conf-ninja@1"
+    },
+    {
+      "type": "library",
+      "name": "conf-npm",
+      "version": "1",
+      "licenses": [
+        {
+          "license": {
+            "name": "Artistic-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "build-only"
+        }
+      ],
+      "purl": "pkg:opam/conf-npm@1"
+    },
+    {
+      "type": "library",
+      "name": "conf-openjdk",
+      "version": "1",
+      "licenses": [
+        {
+          "license": {
+            "name": "GPLv2 with linking exception"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "build-only"
+        }
+      ],
+      "purl": "pkg:opam/conf-openjdk@1"
+    },
+    {
+      "type": "library",
+      "name": "conf-pandoc",
+      "version": "0.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "GPL-3.0-only"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "build-only"
+        }
+      ],
+      "purl": "pkg:opam/conf-pandoc@0.1"
+    },
+    {
+      "type": "library",
+      "name": "conf-python-3-dev",
+      "version": "1",
+      "licenses": [
+        {
+          "license": {
+            "name": "PSF-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "build-only"
+        }
+      ],
+      "purl": "pkg:opam/conf-python-3-dev@1"
+    },
+    {
+      "type": "library",
+      "name": "cppo",
+      "version": "1.8.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "BSD-3-Clause"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "build-only"
+        }
+      ],
+      "purl": "pkg:opam/cppo@1.8.0"
+    },
+    {
+      "type": "library",
+      "name": "dune",
+      "version": "3.24.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "build-only"
+        }
+      ],
+      "purl": "pkg:opam/dune@3.24.2"
+    },
+    {
+      "type": "library",
+      "name": "dune-configurator",
+      "version": "3.24.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "build-only"
+        }
+      ],
+      "purl": "pkg:opam/dune-configurator@3.24.2"
+    },
+    {
+      "type": "library",
+      "name": "menhir",
+      "version": "20250912",
+      "licenses": [
+        {
+          "license": {
+            "name": "GPL-2.0-only"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "build-only"
+        }
+      ],
+      "purl": "pkg:opam/menhir@20250912"
+    },
+    {
+      "type": "library",
+      "name": "ocamlfind",
+      "version": "1.9.8",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "build-only"
+        }
+      ],
+      "purl": "pkg:opam/ocamlfind@1.9.8"
+    },
+    {
+      "type": "library",
+      "name": "OCaml",
+      "version": "4.14.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "linked"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "libgmp",
+      "version": "system",
+      "licenses": [
+        {
+          "license": {
+            "name": "LGPL-3.0-or-later OR GPL-2.0-or-later"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "linked (dynamic)"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "glibc (libc, libm)",
+      "version": "system",
+      "licenses": [
+        {
+          "license": {
+            "name": "LGPL-2.1-or-later"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "linked (dynamic)"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "Unicode Character Database",
+      "version": "15.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "Unicode License v3"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "generated data"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "deps/bindlib",
+      "version": "local",
+      "licenses": [
+        {
+          "license": {
+            "name": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "vendored"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "deps/dates-calc",
+      "version": "0.10.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "Apache-2.0"
+          }
+        }
+      ],
+      "properties": [
+        {
+          "name": "role",
+          "value": "vendored"
+        }
+      ]
+    }
+  ]
+}

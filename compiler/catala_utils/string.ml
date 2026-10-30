@@ -2,6 +2,9 @@
    and social benefits computation rules. Copyright (C) 2020 Inria, contributor:
    Denis Merigoux <denis.merigoux@inria.fr>, Emile Rolley <emile.rolley@tuta.io>
 
+   Modified in this distribution: the Ubase-based transliteration was replaced
+   by a generated Unicode table (see THIRD_PARTY_LICENSES.md).
+
    Licensed under the Apache License, Version 2.0 (the "License"); you may not
    use this file except in compliance with the License. You may obtain a copy of
    the License at
