@@ -5,7 +5,7 @@
   (:standard -short-paths))
  (libraries
   dynlink
-  bindlib
+  catala.bindlib
   catala_utils
   catala.runtime_ocaml
   alcotest

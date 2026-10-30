@@ -2,7 +2,7 @@
  (name dcalc)
  (public_name catala.dcalc)
  (libraries
-  bindlib
+  catala.bindlib
   catala_utils
   re
   ubase
