@@ -306,12 +306,12 @@ val reset_trace : unit -> unit
 (** This module is for setting options and internals, use [Value.format] to
     print values *)
 module Print : sig
-  type lang = [ `En | `Fr | `Pl ]
+  type lang = [ `En | `Fr | `Pl | `Zh ]
 
-  val set_lang : [ `En | `Fr | `Pl ] -> unit
+  val set_lang : [ `En | `Fr | `Pl | `Zh ] -> unit
   (** Sets the language to be used for the output of values *)
 
-  val get_lang : unit -> [ `En | `Fr | `Pl ]
+  val get_lang : unit -> [ `En | `Fr | `Pl | `Zh ]
 
   val set_precision : int -> unit
   (** Sets the maximum number of decimal numbers to print *)

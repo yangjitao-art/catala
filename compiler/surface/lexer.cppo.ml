@@ -809,6 +809,42 @@ let rec lex_code (lexbuf : lexbuf) : token =
   | ',' ->
       L.update_acc lexbuf;
       COMMA
+  (* Localised built-in type and function names are lexed as identifiers so
+     that the parser can resolve them through [lex_primitive_type] and
+     [lex_builtin]; this is needed for non-ASCII lexers such as Chinese. *)
+  | MR_INTEGER ->
+      L.update_acc lexbuf;
+      LIDENT (Utf8.lexeme lexbuf)
+  | MR_MONEY ->
+      L.update_acc lexbuf;
+      LIDENT (Utf8.lexeme lexbuf)
+  | MR_DECIMAL ->
+      L.update_acc lexbuf;
+      LIDENT (Utf8.lexeme lexbuf)
+  | MR_BOOLEAN ->
+      L.update_acc lexbuf;
+      LIDENT (Utf8.lexeme lexbuf)
+  | MR_DURATION ->
+      L.update_acc lexbuf;
+      LIDENT (Utf8.lexeme lexbuf)
+  | MR_POSITION ->
+      L.update_acc lexbuf;
+      LIDENT (Utf8.lexeme lexbuf)
+  | MR_Round ->
+      L.update_acc lexbuf;
+      LIDENT (Utf8.lexeme lexbuf)
+  | MR_Impossible ->
+      L.update_acc lexbuf;
+      LIDENT (Utf8.lexeme lexbuf)
+  | MR_Cardinal ->
+      L.update_acc lexbuf;
+      LIDENT (Utf8.lexeme lexbuf)
+  | MR_PRESENT ->
+      L.update_acc lexbuf;
+      UIDENT (Utf8.lexeme lexbuf)
+  | MR_ABSENT ->
+      L.update_acc lexbuf;
+      UIDENT (Utf8.lexeme lexbuf)
   | uppercase, Star idchar ->
       (* Name of constructor *)
       L.update_acc lexbuf;
