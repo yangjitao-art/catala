@@ -39,16 +39,31 @@ The implementation is original code: no source lines or comments were copied.
    outputs are compared byte for byte (timing lines excluded). All non-timing
    lines are identical.
 
-2. **Catala's own suite.** With this module in place, `make test` passes
-   716/716 tests, the four CI `--test-flags` variants (`-O`, `--lcalc`,
-   `--lcalc,--closure-conversion,-O`, `--whole-program`) pass, and
-   `--backend=all` passes for the interpreter, C, Java, OCaml and Python
-   backends. Those tests compare pretty-printed ASTs, generated code and error
-   messages, so they are sensitive to naming and ordering.
+2. **Catala's own suite.** Re-run on 2026-11-21 with the Chinese lexer
+   commits (`catala_zh`) present: `make test` passes **722/722** interpreted
+   tests plus 18 OCaml unit tests. This total includes the six
+   `tests/zh/good/dialect.catala_zh` CLI cases, which exercise `Typecheck`,
+   `test-scope` and the OCaml, C, Python and Java backends (6/6). The four CI
+   `--test-flags` variants (`-O`, `--lcalc`,
+   `--lcalc,--closure-conversion,-O`, `--whole-program`) each pass **481/481**
+   over `tests/`, and the zh scope test passes 1/1 under each variant. Those
+   tests compare pretty-printed ASTs, generated code and error messages, so
+   they are sensitive to naming and ordering.
 
 3. **Performance.** Micro-benchmarks (100k bind/unbind cycles and 1000
    `box_list` evaluations) are within run-to-run noise of the reference
    implementation.
+
+## Environment evidence (2026-11-21)
+
+- `catala.opam.locked` was regenerated with `opam lock ./catala.opam` on the
+  switch actually used for the build: OCaml 4.14.2, dune 3.24.2, sedlex 3.8.1,
+  menhir 20250912. The previous lock pinned OCaml 5.3.0 / dune 3.20.2 /
+  sedlex 3.7 and did not describe this environment.
+- The license bundle was generated with
+  `python3 build_system/third_party_licenses.py --bundle _build/third_party-2026-11-21`:
+  80 license texts (1.2 MiB), `THIRD_PARTY_LICENSES.md` and `sbom.cdx.json`
+  regenerated from the installed dependency set.
 
 ## Known intentional difference
 
